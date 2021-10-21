@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.AppendContent", "Test.AppendContent\Test.AppendContent.csproj", "{63F4DAFA-FCB6-4399-A2E2-E36ACB771C0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{938C9091-6527-415B-98EB-A2948402A795}"
+	ProjectSection(SolutionItems) = preProject
+		assets\sample_256_126.bmp = assets\sample_256_126.bmp
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.ChangeExtention", "Test.ChangeExtention\Test.ChangeExtention.csproj", "{80A8335C-EACE-4F9B-A530-E928B2158C14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63F4DAFA-FCB6-4399-A2E2-E36ACB771C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F4DAFA-FCB6-4399-A2E2-E36ACB771C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F4DAFA-FCB6-4399-A2E2-E36ACB771C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F4DAFA-FCB6-4399-A2E2-E36ACB771C0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80A8335C-EACE-4F9B-A530-E928B2158C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80A8335C-EACE-4F9B-A530-E928B2158C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80A8335C-EACE-4F9B-A530-E928B2158C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80A8335C-EACE-4F9B-A530-E928B2158C14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8359869-7687-4EA0-BB9B-F3D886F04F7B}
+	EndGlobalSection
+EndGlobal
