@@ -3,14 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.AppendContent", "Test.AppendContent\Test.AppendContent.csproj", "{63F4DAFA-FCB6-4399-A2E2-E36ACB771C0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.AppendContent", "Test.AppendContent\Test.AppendContent.csproj", "{63F4DAFA-FCB6-4399-A2E2-E36ACB771C0A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{938C9091-6527-415B-98EB-A2948402A795}"
 	ProjectSection(SolutionItems) = preProject
 		assets\sample_256_126.bmp = assets\sample_256_126.bmp
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.ChangeExtention", "Test.ChangeExtention\Test.ChangeExtention.csproj", "{80A8335C-EACE-4F9B-A530-E928B2158C14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.ChangeExtention", "Test.ChangeExtention\Test.ChangeExtention.csproj", "{80A8335C-EACE-4F9B-A530-E928B2158C14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.ReadBMPHeader", "Test.ReadBMPHeader\Test.ReadBMPHeader.csproj", "{8746507E-B023-43BF-AD45-9774A1FABA73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.Format.BMP", "Simple.Format.BMP\Simple.Format.BMP.csproj", "{107F4D0E-A0D6-4EA7-B1E4-F487F9DC6AE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +30,14 @@ Global
 		{80A8335C-EACE-4F9B-A530-E928B2158C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80A8335C-EACE-4F9B-A530-E928B2158C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80A8335C-EACE-4F9B-A530-E928B2158C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8746507E-B023-43BF-AD45-9774A1FABA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8746507E-B023-43BF-AD45-9774A1FABA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8746507E-B023-43BF-AD45-9774A1FABA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8746507E-B023-43BF-AD45-9774A1FABA73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{107F4D0E-A0D6-4EA7-B1E4-F487F9DC6AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{107F4D0E-A0D6-4EA7-B1E4-F487F9DC6AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{107F4D0E-A0D6-4EA7-B1E4-F487F9DC6AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{107F4D0E-A0D6-4EA7-B1E4-F487F9DC6AE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
