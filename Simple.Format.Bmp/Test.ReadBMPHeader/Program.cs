@@ -18,8 +18,10 @@ namespace Test.ReadBMPHeader
                     File.Delete(copyName);
                 }
                 File.Copy(assetsName, copyName);
-                var bmpHeader = BMP.GetBMPHeader(copyName);
-                Console.WriteLine(bmpHeader.ToString());
+                var bmpFileHeader = BMP.GetBMPFileHeader(copyName);
+                var bmpInfoHeader = BMP.GetBMPInfoHeader(copyName);
+                Console.WriteLine(bmpFileHeader.ToString());
+                Console.WriteLine(bmpInfoHeader.ToString());
             }
             catch (Exception e)
             {
