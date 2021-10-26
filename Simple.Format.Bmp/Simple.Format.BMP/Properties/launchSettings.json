@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Simple.Format.BMP": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

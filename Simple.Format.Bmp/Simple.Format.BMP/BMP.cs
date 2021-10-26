@@ -8,12 +8,27 @@ namespace Simple.Format
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct BMPFileHeader
     {
+        /// <summary>
+        /// BMP Identification code "BM"
+        /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public byte[] ID;   // BMP Identification code "BM"
-        public uint FileSize;   // the size of bmp file
-        public ushort AppSpec1; // reserved commonly zero
-        public ushort AppSpec2; // reserved commonly zero
-        public uint PixelOffset;    // offset of pixel data
+        public byte[] ID;
+        /// <summary>
+        /// the size of bmp file
+        /// </summary>
+        public uint FileSize;
+        /// <summary>
+        /// reserved commonly zero
+        /// </summary>
+        public ushort AppSpec1;
+        /// <summary>
+        /// reserved commonly zero
+        /// </summary>
+        public ushort AppSpec2;
+        /// <summary>
+        /// offset of pixel data
+        /// </summary>
+        public uint PixelOffset;
 
         public override string ToString()
         {
@@ -36,17 +51,47 @@ namespace Simple.Format
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct BMPInfoHeader
     {
-        public uint Size;   // Size of the info header
-        public int Width; // width of bitmap in pixels
-        public int Height;    // height of bitmap in pixels
-        public ushort Planes;   // No. of planes for the target device, always 1
-        public ushort BitCount; // No. of bits per pixels
+        /// <summary>
+        /// Size of the info header
+        /// </summary>
+        public uint Size;
+        /// <summary>
+        /// width of bitmap in pixels
+        /// </summary>
+        public int Width;
+        /// <summary>
+        /// height of bitmap in pixels
+        /// </summary>
+        public int Height;
+        /// <summary>
+        /// No. of planes for the target device, always 1
+        /// </summary>
+        public ushort Planes;
+        /// <summary>
+        /// No. of bits per pixels
+        /// </summary>
+        public ushort BitCount;
         public uint Compression;
-        public uint SizeImage;    // size of the image data
-        public int PixelsPerMeterInX; // ppm in x
-        public int PixelsPerMeterInY; // ppm in y
-        public uint ColorsUsed;   // No. color indexes in the color table. use 0 for max number
-        public uint ColorsImportant;  // No. of colors used for displaying the bitmap
+        /// <summary>
+        /// size of the image data
+        /// </summary>
+        public uint SizeImage;
+        /// <summary>
+        /// ppm in x
+        /// </summary>
+        public int PixelsPerMeterInX;
+        /// <summary>
+        /// ppm in y
+        /// </summary>
+        public int PixelsPerMeterInY;
+        /// <summary>
+        /// No. color indexes in the color table. use 0 for max number
+        /// </summary>
+        public uint ColorsUsed;
+        /// <summary>
+        /// No. of colors used for displaying the bitmap
+        /// </summary>
+        public uint ColorsImportant;
 
         public override string ToString()
         {
@@ -69,7 +114,20 @@ namespace Simple.Format
         }
     }
 
-    public class BMP
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct Pixel
+    {
+        public byte B;
+        public byte G;
+        public byte R;
+
+        public override string ToString()
+        {
+            return $"({B}, {G}, {R})";
+        }
+    }
+
+    public class BMPFile
     {
         public static BMPFileHeader GetBMPFileHeader(byte[] buffer)
         {
@@ -100,6 +158,41 @@ namespace Simple.Format
             var buffer = new byte[bytes.Length - offset];
             Array.Copy(bytes, offset, buffer, 0, buffer.Length);
             return GetBMPInfoHeader(buffer);
+        }
+
+        public BMPFileHeader FileHeader { get; set; }
+        public BMPInfoHeader InfoHeader { get; set; }
+        public Pixel[,] Pixels { get; set; }
+        public BMPFile(string path)
+        {
+            var bytes = File.ReadAllBytes(path);
+            FileHeader = GetBMPFileHeader(bytes);
+            if (!FileHeader.IsValidBmp())
+            {
+                throw new InvalidOperationException("Not a valid BMP file");
+            }
+
+            int offset = Marshal.SizeOf(FileHeader);
+            byte[] buffer = new byte[bytes.Length - offset];
+            Array.Copy(bytes, offset, buffer, 0, buffer.Length);
+            InfoHeader = GetBMPInfoHeader(buffer);
+
+            // Parse the pixel data
+            byte[] pixelBuffer = new byte[InfoHeader.SizeImage];
+            Array.Copy(bytes, FileHeader.PixelOffset, pixelBuffer, 0, InfoHeader.SizeImage);
+            Pixels = new Pixel[InfoHeader.Height, InfoHeader.Width];
+            uint pixelSize = 3;
+            uint rowStride = (uint)(pixelSize * InfoHeader.Width);
+            for (int row = 0; row < InfoHeader.Height; ++row)
+            {
+                for (int col = 0; col < InfoHeader.Width; ++col)
+                {
+                    uint pxOffset = (uint)(row * rowStride + col * pixelSize);
+                    Pixels[row, col].B = pixelBuffer[pxOffset];
+                    Pixels[row, col].G = pixelBuffer[pxOffset + 1];
+                    Pixels[row, col].R = pixelBuffer[pxOffset + 2];
+                }
+            }
         }
     }
 }
